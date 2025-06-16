@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta Name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1 id="name-block">hellow dear I am Website Of Samir</h1>
+<p>This is the page of java script</p>
+<button onclick id="clickButton">click me</button>
+<body>
+    <script>
+        const el= document.getElementById("clickButton");
+        const nameBlock= document.getElementById("name-block");
+        el.addEventListener("click", () => {
+          if(nameBlock.style.color === "silver"){
+            nameBlock.style.color = "pink";
+          }
+          else{
+            nameBlock.style.color = "silver";
+          }
+        });
+    </script>
+</body>
+</html>
