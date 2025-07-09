@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        div {
+            margin: 0 auto;
+            width: 35%;
+            padding: 30px;
+            font-size: 20px;
+            background-color: #006677;
+        }
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type=submit] {
+            width: 100%;
+            background-color: #005555;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type=submit]:hover {
+            background-color: #2F4F4F;
+        }
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+        div label {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <div>
+        <form name="regform" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your Name">
+
+            <label for="email">Email</label>
+            <input type="text" id="email" name="Email" placeholder="Enter your Email">
+            <label for="number">Number</label>
+            <input type="text" id="number" name="Number" placeholder="Enter your Number">
+
+            <label>Gender</label><br/>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label><br/>
+
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <option value="japan">Japan</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        window.location.href = "SUCCESS";
+    });
+</script>
+
+</body>
+</html>
