@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enhanced Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 35%;
+            padding: 30px;
+            font-size: 18px;
+            background-color: #006677;
+            color: white;
+            border-radius: 8px;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input[type=submit], button {
+            width: 48%;
+            padding: 10px;
+            margin: 8px 1%;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type=submit] {
+            background-color: #005555;
+            color: white;
+        }
+
+        button {
+            background-color: #ff6666;
+            color: white;
+        }
+
+        input[type=submit]:hover {
+            background-color: #2F4F4F;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+        }
+
+        h2 {
+            text-align: center;
+            color: blue;
+        }
+
+        .output {
+            margin: 20px auto;
+            width: 35%;
+            font-size: 16px;
+            padding: 15px;
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+    <div class="container">
+        <form id="regForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Enter your email">
+
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+
+            <input type="submit" value="Submit">
+            <button type="button" id="clearBtn">Clear</button>
+        </form>
+    </div>
+
+    <div class="output" id="outputBox" style="display: none;">
+        <h3>Submitted Data:</h3>
+        <p><strong>Name:</strong> <span id="outName"></span></p>
+        <p><strong>Email:</strong> <span id="outEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="outPhone"></span></p>
+    </div>
+
+    <script>
+        const form = document.getElementById("regForm");
+        const clearBtn = document.getElementById("clearBtn");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get values
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+
+            // Basic validation
+            if (name === "" || email === "" || phone === "") {
+                alert("All fields are required.");
+                return;
+            }
+
+            // Update the DOM
+            document.getElementById("outName").textContent = name;
+            document.getElementById("outEmail").textContent = email;
+            document.getElementById("outPhone").textContent = phone;
+            document.getElementById("outputBox").style.display = "block";
+
+            // Optionally reset form
+            // form.reset(); // If you want to auto-clear after submission
+        });
+
+        clearBtn.addEventListener("click", function() {
+            form.reset();
+            document.getElementById("outputBox").style.display = "none";
+        });
+    </script>
+
+</body>
+</html>
