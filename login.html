@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .container { width: 300px; margin: auto; }
+    input { width: 100%; padding: 10px; margin: 8px 0; }
+    button { width: 100%; padding: 10px; }
+    .message { margin-top: 10px; color: green; font-weight: bold; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required />
+    <input type="password" id="loginPassword" placeholder="Password" required />
+    <button onclick="login()">Login</button>
+    <p class="message" id="loginMsg"></p>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      const msg = document.getElementById("loginMsg");
+
+      if (!email || !password) {
+        msg.textContent = "Please fill in both fields.";
+        msg.className = "message error";
+        return;
+      }
+
+      const storedUser = localStorage.getItem(email);
+
+      if (!storedUser) {
+        msg.textContent = "User not found.";
+        msg.className = "message error";
+        return;
+      }
+
+      const user = JSON.parse(storedUser);
+      const encodedInputPassword = btoa(password);
+
+      if (user.password === encodedInputPassword) {
+        msg.textContent = `Welcome back, ${user.name}!`;
+        msg.className = "message";
+      } else {
+        msg.textContent = "Incorrect password.";
+        msg.className = "message error";
+      }
+    }
+  </script>
+</body>
+</html>
