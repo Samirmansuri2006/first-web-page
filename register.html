@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .container { width: 300px; margin: auto; }
+    input { width: 100%; padding: 10px; margin: 8px 0; }
+    button { width: 100%; padding: 10px; }
+    .message { margin-top: 10px; color: green; font-weight: bold; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Register</h2>
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="register()">Register</button>
+    <p class="message" id="regMsg"></p>
+  </div>
+
+  <script>
+    function register() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      const msg = document.getElementById("regMsg");
+
+      if (!name || !email || !password) {
+        msg.textContent = "Please fill all fields.";
+        msg.className = "message error";
+        return;
+      }
+
+      // Simulate simple encoding (not secure in real apps!)
+      const user = {
+        name,
+        email,
+        password: btoa(password) // encode base64 for demo
+      };
+
+      // Store user using email as key
+      localStorage.setItem(email, JSON.stringify(user));
+
+      msg.textContent = "Registration successful!";
+      msg.className = "message";
+
+      // Optionally, clear form
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+    }
+  </script>
+</body>
+</html>
