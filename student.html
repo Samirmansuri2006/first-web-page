@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Marks</title>
+<style>
+  body {font-family: Arial; margin:20px;}
+  input,button {margin:5px; padding:5px;}
+  table {border-collapse: collapse; margin-top:10px;}
+  th,td {border:1px solid #000; padding:5px;}
+</style>
+</head>
+<body>
+
+<h2>Student Mark Entry</h2>
+<input id="name" placeholder="Student Name">
+<input id="subject" placeholder="Subject">
+<input id="marks" type="number" placeholder="Marks">
+<button onclick="addEntry()">Add</button>
+
+<table id="dataTable">
+  <tr><th>Name</th><th>Subject</th><th>Marks</th></tr>
+</table>
+
+<script>
+function addEntry(){
+  const n = document.getElementById('name').value;
+  const s = document.getElementById('subject').value;
+  const m = document.getElementById('marks').value;
+  if(n && s && m){
+    document.getElementById('dataTable').innerHTML += 
+      `<tr><td>${n}</td><td>${s}</td><td>${m}</td></tr>`;
+    document.getElementById('name').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('marks').value = '';
+  }
+}
+</script>
+
+</body>
+</html>
